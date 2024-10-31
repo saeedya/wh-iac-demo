@@ -12,7 +12,7 @@ A two-tier architecture is a client-server model that consists of two layers:
 
 ## Demo architecture
 
-![main architecture](images/architecture-main.png)
+![main architecture](images/main-architecture.png)
 
 ## Pre-requirements
     1. Terraform install

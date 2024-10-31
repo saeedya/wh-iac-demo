@@ -9,3 +9,7 @@ A two-tier architecture is a client-server model that consists of two layers:
     2. Data (Server) Tier: The back-end database server, which processes requests from the client, retrieves, stores, and manages data.
 
 ![2-Tier architecture](images/2-tier-architecture.png)
+
+## Demo architecture
+
+![main architecture](images/architecture-main.png)

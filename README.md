@@ -14,7 +14,7 @@ A two-tier architecture is a client-server model that consists of two layers:
 
 ![main architecture](images/architecture-main.png)
 
-# Pre-requirements
+## Pre-requirements
     1. Terraform install
     2. AWS-cli
     3- IAM user(Please do not share the secrets)

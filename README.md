@@ -18,3 +18,11 @@ A two-tier architecture is a client-server model that consists of two layers:
     1. Terraform install
     2. AWS-cli
     3- IAM user(Please do not share the secrets)
+
+## Store state files on remote location
+* S3 bucket to save state file in remote location
+* Bucket versioning
+* State locking(DynamoDB) - We can keep tfstate file consistent while working on a project as a team
+
+
+

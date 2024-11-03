@@ -11,6 +11,7 @@ This project demonstrates a high-availability, and fault-tolerant 2-tier archite
 * Amazon RDS: A Multi-AZ database setup for high availability. The database is replicated in a secondary AZ for redundancy.
 * Amazon S3: Stores Terraform state files for centralized state management.
 * Amazon DynamoDB: Provides state locking for Terraform to prevent concurrent state modifications.
+* NAT Gateway: Enables secure internet access for instances in private subnets, allowing them to download updates or communicate externally without exposing them directly to the internet.
 
 ## Architecture Diagram
 
@@ -102,6 +103,22 @@ terraform-2-tier-architecture/
 │
 └── README.md                # Project documentation
 ```
+## Key Features
+1. High Availability: Resources are spread across multiple AZs to ensure high availability.
+2. Fault Tolerance: Multi-AZ setup with redundancy in RDS and Auto Scaling ensures failover capability.
+3. Scalability: Auto Scaling dynamically adjusts the number of EC2 instances to handle traffic fluctuations.
+4. Security: Resources are deployed in a VPC with subnets (public and private) for isolation. Security groups manage access control.
+5. Global Reach: CloudFront improves global access to content and reduces latency.
+
+## Modules
+* VPC: Defines the VPC, public subnets, private subnets, and associated networking resources.
+* ALB: Provisions the Elastic Load Balancer to distribute incoming traffic.
+* ASG: Configures the Auto Scaling Group to manage EC2 instances.
+* RDS: Deploys the primary and standby RDS instances for database availability.
+* CloudFront: Configures CloudFront to cache content at edge locations for low-latency delivery.
+* Security Groups: Defines security group rules for the ELB, EC2 instances, and RDS.
+* NAT:  Sets up NAT Gateways in each availability zone to provide internet access for private subnets.
+* Route 53: Manages DNS records for the domain and routes traffic to CloudFront for efficient content distribution.
 
 
 

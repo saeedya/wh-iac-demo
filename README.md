@@ -1,7 +1,6 @@
-## What is the propose?
-Implementing 2-Tier architecture in AWS with Terraform.
+# Implementing 2-Tier architecture in AWS with Terraform.
 
-## Overview
+### Overview
 This project demonstrates a high-availability, and fault-tolerant 2-tier architecture deployed on AWS using Infrastructure as Code (IaC) with Terraform. The architecture is built with the following components:
 
 * Amazon Route 53: Manages DNS routing for our domain (sample.net), directing traffic to CloudFront for optimized content delivery.
@@ -13,11 +12,11 @@ This project demonstrates a high-availability, and fault-tolerant 2-tier archite
 * Amazon DynamoDB: Provides state locking for Terraform to prevent concurrent state modifications.
 * NAT Gateway: Enables secure internet access for instances in private subnets, allowing them to download updates or communicate externally without exposing them directly to the internet.
 
-## Architecture Diagram
+### Architecture Diagram
 
 ![main architecture](images/architecture.jpeg)
 
-## Components
+### Components
 1. Route 53: Routes user requests to CloudFront for efficient content delivery.
 2. CloudFront: Acts as a global CDN for faster data delivery and latency reduction.
 3. Elastic Load Balancer (ELB): Balances traffic among multiple EC2 instances in different AZs.
@@ -79,7 +78,7 @@ terraform plan        # Review the changes to be made
 terraform apply       # Deploy the resources
 ```
 
-## Directory Structure
+### Directory Structure
 ```
 terraform-2-tier-architecture/
 │
@@ -103,14 +102,14 @@ terraform-2-tier-architecture/
 │
 └── README.md                # Project documentation
 ```
-## Key Features
+### Key Features
 1. High Availability: Resources are spread across multiple AZs to ensure high availability.
 2. Fault Tolerance: Multi-AZ setup with redundancy in RDS and Auto Scaling ensures failover capability.
 3. Scalability: Auto Scaling dynamically adjusts the number of EC2 instances to handle traffic fluctuations.
 4. Security: Resources are deployed in a VPC with subnets (public and private) for isolation. Security groups manage access control.
 5. Global Reach: CloudFront improves global access to content and reduces latency.
 
-## Modules
+### Modules
 * VPC: Defines the VPC, public subnets, private subnets, and associated networking resources.
 * ALB: Provisions the Elastic Load Balancer to distribute incoming traffic.
 * ASG: Configures the Auto Scaling Group to manage EC2 instances.
@@ -120,5 +119,11 @@ terraform-2-tier-architecture/
 * NAT:  Sets up NAT Gateways in each availability zone to provide internet access for private subnets.
 * Route 53: Manages DNS records for the domain and routes traffic to CloudFront for efficient content distribution.
 
+### Notes
+* Cost Consideration: Be mindful of AWS costs associated with running a multi-region architecture with load balancers, CloudFront, RDS, NAT Gateways, and S3/DynamoDB for state management.
+* Teardown: To avoid ongoing charges, use terraform destroy to tear down resources after you’re done testing.
+
+### Conclusion
+This Terraform-based project provides a highly available, fault-tolerant, scalable, and secure 2-tier architecture on AWS. It leverages AWS services like CloudFront, Route 53, ALB, and Auto Scaling, along with Terraform's infrastructure as code approach to automate deployment.
 
 

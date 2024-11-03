@@ -77,10 +77,31 @@ terraform init        # Initialize the Terraform configuration
 terraform plan        # Review the changes to be made
 terraform apply       # Deploy the resources
 ```
-## Store state files on remote location
-* S3 bucket to save state file in remote location
-* Bucket versioning
-* State locking(DynamoDB) - We can keep tfstate file consistent while working on a project as a team
+
+## Directory Structure
+```
+terraform-2-tier-architecture/
+│
+├── root
+   ├── main.tf                  # Main configuration with multi-region providers and module calls
+   ├── variables.tf             # Global variables
+   ├── outputs.tf               # Global outputs
+   ├── terraform.tfvars         # Variable values
+   ├── backend.tf               # Store tfstate and locking purpose
+│
+├── modules/                 # Directory for modules
+│   ├── alb/                 # LoadBalancer module
+│   ├── asg/                 # Auto Scaling Group module
+│   ├── cloudfront/          # CloudFront module
+│   ├── nat/                 # Nat module
+│   ├── rds/                 # RDS module
+│   ├── route53/             # DNS module
+│   ├── sg/                  # Security Group module
+│   ├── ssh-key/             # Key module
+│   ├── vpc/                 # VPC module
+│
+└── README.md                # Project documentation
+```
 
 
 

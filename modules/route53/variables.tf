@@ -1,5 +1,5 @@
 variable hosted_zone_name{
-    default = "s10i.xyz"
+    default = "your-hosted-zone"
 }
 
 variable cloudfront_hosted_zone_id {}
